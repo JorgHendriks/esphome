@@ -99,6 +99,10 @@ bool MQTTComponent::send_discovery_() {
             break;
         }
 
+        if (this->qos_ != 0) {
+          root[MQTT_QOS] = this->qos_;
+        }
+
         if (config.state_topic)
           root[MQTT_STATE_TOPIC] = this->get_state_topic_();
         if (config.command_topic)
